@@ -1,18 +1,36 @@
 name: Node.js CI
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Use Node.js
+    steps:
+      # Step 1: Checkout your repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18'   # or whatever version you need
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
-        working-directory: ./frontend   # adjust if your package.json is in a subfolder
+        working-directory: ./frontend   # change/remove depending on repo structure
+
+      # Step 4: Run build/test
+      - name: Run build
+        run: npm run build
+        working-directory: ./frontend   # same adjustment as above
+
+      - name: Run tests
+        run: npm test
+        working-directory: ./frontend   # same adjustment as above
