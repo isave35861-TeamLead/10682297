@@ -11,26 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout your repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'   # or whatever version you need
+          node-version: '18'
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
-        working-directory: ./frontend   # change/remove depending on repo structure
+        working-directory: ./frontend
 
-      # Step 4: Run build/test
       - name: Run build
         run: npm run build
-        working-directory: ./frontend   # same adjustment as above
+        working-directory: ./frontend
 
       - name: Run tests
         run: npm test
-        working-directory: ./frontend   # same adjustment as above
+        working-directory: ./frontend
