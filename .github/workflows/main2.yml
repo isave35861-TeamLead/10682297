@@ -1,0 +1,13 @@
+name: schedule jobs
+
+on:
+  schedule:
+    # Runs every year on May 17th at 00:40 (Sunday only if May 17 is a Sunday)
+    - cron: "41 0 17 5 *"
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print message
+        run: echo "Schedule workflow executed"
