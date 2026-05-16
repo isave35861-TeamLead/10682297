@@ -1,0 +1,34 @@
+name: Run Node.js App
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-node-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Start Node.js app in background
+      - name: Start app
+        run: |
+          nohup node index.js &
+          sleep 5
+
+      # Step 5: Test app on port 3000
+      - name: Test app
+        run: curl http://localhost:3000
