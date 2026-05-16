@@ -1,0 +1,12 @@
+i{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "description": "Simple Node.js project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Rajratna",
+  "license": "MIT"
+}
+
