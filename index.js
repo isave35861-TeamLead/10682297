@@ -1,13 +1,8 @@
-// Simple Node.js app
-const http = require("http");
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello from Rajratna hano save'sNode.js app!");
-});
-
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
-
+export default function Home() {
+  return (
+    <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
+      <h1>🚀 Hello Next.js!</h1>
+      <p>Your app is running successfully.</p>
+    </main>
+  );
+}
